@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            border: 2px solid black;
+            padding: 15px;
+            border-radius: 10px;
+            /* box-shadow: 10px 10px 10px 10px black; */
+            /* box-shadow: 2px 0px 2px 2px black; */
+            /* box-shadow: 20px 10px rgb(128, 58, 0); */
+            /* box-shadow: -20px -10px green; */
+            /* box-shadow: -10px -10px  10px black; */
+            box-shadow:  0px 0px 20px 4px  black;
+            /* box-shadow: ; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="head"></div> -->
+        <h2>Random Number Guessing Game</h2>
+        <form>
+            <div>
+            <label for="gamelevel">Game Level :</label>
+            <select name="" id="option" onchange="getvalue()">
+                <option value="select" >--Select---</option>
+                <option id="op1" value="Easy">Easy </option>
+                <option id="op" value="Medium">Medium</option>
+                <option id="op" value="Hard">Hard</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="" >Number Range is :</label>
+            <input type="text" value=""   id="value_dis" readonly>
+        </div>
+        <br>
+        <div>
+            <label for="">Total Attempt :</label>
+            <input type="text" value=" " id="total">
+        </div>
+        <h4>Guess the Number</h4>
+        <div>
+            <div id="result"></div>
+            <input type="text" id="usernum" autocomplete="none">
+            <input type="button" value="check ans" onclick="ans()">
+            <!-- <input type="submit" value="dddddddddddddd">sdfasfasdas -->
+            <!-- <button onclick="ans()">check Ans</button> -->
+        </div>
+        <div>
+            <!-- <input type="button" value="Restart Game"> -->
+            <button id="reset">Restart Game</button>
+        </div>
+    
+            
+        </form>
+    </div>
+    <script>
+    //    let form=document.forms;
+    //    console.log(form); 
+let val_dis1=document.getElementById('value_dis');
+console.log(val_dis1);
+// val_dis1.value='a'
+// val_dis1.getattributes('value',"ans")
+// let btn=document.getElementById('reset');
+
+
+// console.log(val_dis1);
+
+// const b=a.select
+// console.log(b);
+// a=Array.from(a);
+// a.forEach((e)=>
+// console.log(e))
+function display(value1)
+{
+    // console.log("value 1 value inn fun is " ,value1);
+//    console.log(typeof value1); 
+if(value1=='Easy')
+{
+    val_dis1.value='0 to 10'
+    //  console.log('hiiiiiiii');
+    // console.log("yes i got easy")
+}
+else if(value1=='Medium')
+{
+    val_dis1.value='0 to 50'
+    
+}
+else if(value1=='Hard'){
+    val_dis1.value='0 to 100'
+    
+
+}
+// console.log("i m in upper");
+}
+function getvalue()
+{
+    let value1=document.getElementById('option').value
+    // console.log(value1);
+    display(value1);
+    // console.log('after fun');
+    // var value1=document.getElementById('option').value;
+    // console.log(value1);
+}
+const usernum=document.getElementById("usernum");
+let display_result=document.getElementById("result");
+let cnt=0;
+// console.log(usernum);
+const computer=Math.floor(Math.random()*10)
+const computer2=Math.floor(Math.random()*50)
+const computer3=Math.floor(Math.random()*100)
+let total_=document.getElementById('total')
+function levelcheck(){
+    // console.log(computer);
+    // console.log(computer2);
+    // console.log(computer3);
+    // cnt=0;
+    if(val_dis1.value=='0 to 10' )
+    {
+         cnt=cnt+1;
+        //  console.log(cnt);
+        //  total_.value=cnt;
+        // console.log("true");
+        // console.log(computer);
+        if(usernum.value==computer)
+        {
+            console.log("insoe if");
+            display_result.style.display='block';
+            display_result.textContent='congrats you have won';
+            display_result.style.color='green';
+            display_result.style.fontSize='28px';
+            // display_result.style.backgroundColor='black';   // display_result.style.display='block';
+        }
+        else if(usernum.value>computer)
+        {
+            display_result.textContent="your input is greter than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.color='red'
+            display_result.style.fontSize='20px'
+            // display_result.style.fontSize='30px'
+            display_result.style.border=' 2px solid black'
+            display_result.style.display="block"
+            
+        }
+        else if(usernum.value<computer)
+        {
+            display_result.textContent="your input is less than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.fontSize='20px'
+            display_result.style.color='black'
+            display_result.style.display="block"
+            display_result.style.border=' 2px solid black'
+            
+        }
+        total_.value=cnt;
+    }
+    else
+     if (val_dis1.value=='0 to 50')
+    {cnt=cnt+1;
+        // if(val_dis1.value=='0 to 10')
+    
+        // console.log("true");
+        // console.log(computer);
+        if(usernum.value==computer2)
+        {
+            console.log("insoe if");
+            display_result.style.display='block';
+            display_result.textContent='congrats you have won';
+            display_result.style.color='green';
+            display_result.style.fontSize='28px';
+            // display_result.style.backgroundColor='black';   // display_result.style.display='block';
+        }
+        else if(usernum.value>computer2)
+        {
+            display_result.textContent="your input is greter than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.color='red'
+            display_result.style.fontSize='20px'
+            // display_result.style.fontSize='30px'
+            display_result.style.border=' 2px solid black'
+            display_result.style.display="block"
+            
+        }
+        else if(usernum.value<computer2)
+        {
+            display_result.textContent="your input is less than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.fontSize='20px'
+            display_result.style.color='black'
+            display_result.style.display="block"
+            display_result.style.border=' 2px solid black'
+            
+        }
+    
+        total_.value=cnt;
+    }
+    else if(val_dis1.value=='0 to 100')
+    {cnt=cnt+1;
+        if(usernum.value==computer3)
+        {
+            console.log("insoe if");
+            display_result.style.display='block';
+            display_result.textContent='congrats you have won';
+            display_result.style.color='green';
+            display_result.style.fontSize='28px';
+            // display_result.style.backgroundColor='black';   // display_result.style.display='block';
+        }
+        else if(usernum.value>computer3)
+        {
+            display_result.textContent="your input is greter than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.color='red'
+            display_result.style.fontSize='20px'
+            // display_result.style.fontSize='30px'
+            display_result.style.border=' 2px solid black'
+            display_result.style.display="block"
+            
+        }
+        else if(usernum.value<computer3)
+        {
+            display_result.textContent="your input is less than computer value"
+            // disp_resultla.style.color='yellow'
+            display_result.style.fontSize='20px'
+            display_result.style.color='black'
+            display_result.style.display="block"
+            display_result.style.border=' 2px solid black'
+            
+        }
+    
+        total_.value=cnt;
+    }
+
+
+}
+function ans()
+{
+    // console.log(" ans ",val_dis1.value);
+    // console.log("im in ans fun ");
+    levelcheck();
+}
+// console.log(computer);
+
+// const usernum=document.getElementById("usernum")
+//         const computernum=Math.floor(Math.random()*10)
+//         // console.log(computernum);
+//         const display=document.getElementById('display')
+//         function check()
+//         {
+//             // while(1)
+//             {
+//                 if(usernum.value==computernum)
+//         {
+//             display.textContent="yeah you have won"
+//             display.style.display="block"
+//             display.style.color='green'
+//             display.style.display="inline-block"
+//             display.style.border=' 2px solid black'
+//             display.style.border=' 2px solid black'
+//             display.style.fontSize='30px'
+//         }
+//         else if(usernum.value>computernum)
+//         {
+//             display.textContent="your input is greter than computer value"
+//             // displa.style.color='yellow'
+//             display.style.color='red'
+//             display.style.fontSize='30px'
+//             display.style.fontSize='30px'
+//             display.style.border=' 2px solid black'
+//             display.style.display="inline-block"
+            
+//         }
+//         else if(usernum.value<computernum)
+//         {
+//             display.textContent="your input is less than computer value"
+//             // displa.style.color='yellow'
+//             display.style.fontSize='30px'
+//             display.style.color='black'
+//             display.style.display="inline-block"
+//             display.style.border=' 2px solid black'
+            
+//         }
+//         else{
+//             display.textContent="Sorry you have lose"
+//             display.style.display="block"
+//             display.style.color='red'
+//             display.style.fontSize='30px'
+//             display.style.border=' 2px solid black'
+//             display.style.display="inline-block"
+//         }
+// console.log(a);
+    </script>
+</body>
+</html>
